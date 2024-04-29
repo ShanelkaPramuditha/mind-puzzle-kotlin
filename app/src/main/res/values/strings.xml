@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Game</string>
-    <string name="game_name">Memory Puzzle</string>
+    <string name="app_name">Mind Flip</string>
+    <string name="game_name">Mind Flip</string>
     <string name="backText">Back</string>
 </resources>
