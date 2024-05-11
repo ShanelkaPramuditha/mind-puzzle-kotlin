@@ -1,8 +1,9 @@
 package com.example.game
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.SharedPreferences;
 import android.os.Bundle
-import android.os.Handler;
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -19,18 +20,14 @@ class MainActivity : AppCompatActivity() {
     private val KEY_BEST_SCORE = "bestScore"
     private lateinit var sharedPreferences: SharedPreferences
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        /* ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        } */
 
         // Card values
-        val images: MutableList<Int> = mutableListOf(acard, bcard, ccard, dcard, ecard, fcard, acard, bcard, ccard, dcard, ecard, fcard)
+        val images: MutableList<Int> = mutableListOf(acard, bcard, ccard, dcard, ecard, fcard, gcard, hcard, acard, bcard, ccard, dcard, ecard, fcard, gcard, hcard)
         val back = blank
         val backText = backText.toString()
 
@@ -66,12 +63,16 @@ class MainActivity : AppCompatActivity() {
             findViewById(button9),
             findViewById(button10),
             findViewById(button11),
-            findViewById(button12)
+            findViewById(button12),
+            findViewById(button13),
+            findViewById(button14),
+            findViewById(button15),
+            findViewById(button16)
         )
 
         images.shuffle()
 
-        for (i in 0..11) {
+        for (i in 0..15) {
             buttons[i].text = backText
             buttons[i].textSize = 0.0F
             buttons[i].setOnClickListener {
@@ -139,6 +140,11 @@ class MainActivity : AppCompatActivity() {
                         editor.apply()
                         bestScoreText.text = "Best: $time"
                     }
+
+                    // Go to the game over activity and pass the timer value
+                    val intent = Intent(this, OverActivity::class.java)
+                    intent.putExtra("time", time)
+                    startActivity(intent)
                 }
             }
         }
