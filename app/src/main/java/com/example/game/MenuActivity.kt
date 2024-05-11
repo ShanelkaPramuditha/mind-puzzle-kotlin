@@ -8,10 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 
 class MenuActivity : AppCompatActivity() {
-    private lateinit var viewModel: GameViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,13 +20,6 @@ class MenuActivity : AppCompatActivity() {
             insets
 
         }
-        //viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
-
-        // Set high score
-        //viewModel.bestScore.observe(this, Observer { score ->
-            // Update UI with the best score
-            //findViewById<TextView>(R.id.score).text = "$score"
-        //})
 
         // Get high score from shared preferences
         val sharedPreferences = getSharedPreferences("game_data", MODE_PRIVATE)

@@ -1,5 +1,6 @@
 package com.example.game
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences;
 import android.os.Bundle
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private val KEY_BEST_SCORE = "bestScore"
     private lateinit var sharedPreferences: SharedPreferences
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
